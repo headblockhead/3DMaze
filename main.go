@@ -13,21 +13,20 @@ import (
 
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
-	"github.com/lxn/win"
 )
 
 const texSize = 64
 
 var cheatcode = 0
-var w = int(win.GetSystemMetrics(win.SM_CXSCREEN)) / 2
-var h = int(win.GetSystemMetrics(win.SM_CYSCREEN)) / 2
+var w = 100 //int(win.GetSystemMetrics(win.SM_CXSCREEN)) / 2
+var h = 500 //int(win.GetSystemMetrics(win.SM_CYSCREEN)) / 2
 
 var (
 	fullscreen   = true
 	showMap      = false
 	width        = w
 	height       = h
-	scale        = 1.0
+	scale        = 3.0
 	wallDistance = 10.0
 
 	as actionSquare
@@ -360,7 +359,7 @@ func (as actionSquare) set(n int) {
 func run() {
 	cfg := pixelgl.WindowConfig{
 		Bounds:      pixel.R(0, 0, float64(width)*scale, float64(height)*scale),
-		VSync:       true,
+		VSync:       false,
 		Undecorated: true,
 	}
 

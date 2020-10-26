@@ -1,0 +1,20 @@
+Thanks for installing 3D MAZE!
+
+This is an instruction manual provided with the game.
+
+Launch:
+
+    Click on the start menu entry under '3D Maze' called 'Launch'
+
+Controls:
+
+    W - Go forwards
+    A - Turn left
+    S - Go backwards
+    D - Turn right
+
+To Uninstall:
+
+    Click on the start menu entry under '3D Maze' called 'Uninstall'
+
+Thanks for playing!
