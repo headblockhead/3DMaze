@@ -1,2 +1,4 @@
-# Arcade_sim
-## In Development : Will not work!
+# 3D Maze
+## 3D Maze Game!
+
+### Press 'M' to cheat and get a map!

@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"flag"
-	"fmt"
 	"image"
 	"image/color"
 	"image/draw"
@@ -19,15 +18,16 @@ import (
 
 const texSize = 64
 
-var w = int(win.GetSystemMetrics(win.SM_CXSCREEN))/2
-var h = int(win.GetSystemMetrics(win.SM_CYSCREEN))/2
+var cheatcode = 0
+var w = int(win.GetSystemMetrics(win.SM_CXSCREEN)) / 2
+var h = int(win.GetSystemMetrics(win.SM_CYSCREEN)) / 2
 
 var (
 	fullscreen   = true
 	showMap      = false
 	width        = w
 	height       = h
-	scale        = 2.0
+	scale        = 1.0
 	wallDistance = 10.0
 
 	as actionSquare
@@ -71,7 +71,7 @@ var world = [24][24]int{
 }
 
 func loadTextures() *image.RGBA {
-	data, _ := ioutil.ReadFile("textures.png")
+	data, _ := ioutil.ReadFile("C:/3DMAZE/textures.png")
 	p, err := png.Decode(bytes.NewReader(data))
 	if err != nil {
 		panic(err)
@@ -396,7 +396,11 @@ func run() {
 		}
 
 		if win.Pressed(pixelgl.KeyA) {
-			moveLeft(3.5 * dt)
+			if cheatcode == 3 {
+				//showMap = !showMap
+				cheatcode++
+			}
+			turnLeft(1.2 * dt)
 		}
 
 		if win.Pressed(pixelgl.KeyDown) || win.Pressed(pixelgl.KeyS) {
@@ -404,55 +408,31 @@ func run() {
 		}
 
 		if win.Pressed(pixelgl.KeyD) {
-			moveRight(3.5 * dt)
-		}
-
-		if win.Pressed(pixelgl.KeyRight) {
 			turnRight(1.2 * dt)
 		}
-
-		if win.Pressed(pixelgl.KeyLeft) {
-			turnLeft(1.2 * dt)
+		if win.JustPressed(pixelgl.KeyC) {
+			if cheatcode == 0 {
+				//showMap = !showMap
+				cheatcode++
+			}
 		}
-
-		if win.JustPressed(pixelgl.KeyM) {
-			showMap = !showMap
+		if win.JustPressed(pixelgl.KeyH) {
+			if cheatcode == 1 {
+				//showMap = !showMap
+				cheatcode++
+			}
 		}
-
-		if win.JustPressed(pixelgl.Key1) {
-			as.set(1)
+		if win.JustPressed(pixelgl.KeyE) {
+			if cheatcode == 2 {
+				//showMap = !showMap
+				cheatcode++
+			}
 		}
-
-		if win.JustPressed(pixelgl.Key2) {
-			as.set(2)
-		}
-
-		if win.JustPressed(pixelgl.Key3) {
-			as.set(3)
-		}
-
-		if win.JustPressed(pixelgl.Key4) {
-			as.set(4)
-		}
-
-		if win.JustPressed(pixelgl.Key5) {
-			as.set(5)
-		}
-
-		if win.JustPressed(pixelgl.Key6) {
-			as.set(6)
-		}
-
-		if win.JustPressed(pixelgl.Key7) {
-			as.set(7)
-		}
-
-		if win.JustPressed(pixelgl.Key0) {
-			as.set(0)
-		}
-
-		if win.JustPressed(pixelgl.KeySpace) {
-			as.toggle(3)
+		if win.JustPressed(pixelgl.KeyT) {
+			if cheatcode == 4 {
+				showMap = !showMap
+				cheatcode++
+			}
 		}
 
 		p := pixel.PictureDataFromImage(frame())
@@ -543,8 +523,6 @@ func turnLeft(s float64) {
 }
 
 func main() {
-
-	fmt.Printf("%dx%d\n", w, h)
 
 	flag.BoolVar(&fullscreen, "f", fullscreen, "fullscreen")
 	flag.IntVar(&width, "w", width, "width")
