@@ -13,13 +13,14 @@ import (
 
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
+	"github.com/lxn/win"
 )
 
 const texSize = 64
 
 var cheatcode = 0
-var w = 100 //int(win.GetSystemMetrics(win.SM_CXSCREEN)) / 2
-var h = 500 //int(win.GetSystemMetrics(win.SM_CYSCREEN)) / 2
+var w = int(win.GetSystemMetrics(win.SM_CXSCREEN)) / 2
+var h = int(win.GetSystemMetrics(win.SM_CYSCREEN)) / 2
 
 var (
 	fullscreen   = true
