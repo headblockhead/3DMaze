@@ -1,4 +1,2 @@
 # 3D Maze
-## 3D Maze Game!
-
-### See 'Manual.txt' for instructions
+A Go 3D maze game designed for windows.
